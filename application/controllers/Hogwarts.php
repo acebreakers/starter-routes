@@ -42,4 +42,18 @@ class Hogwarts extends Application
       $this->render();
 	}
 
+	/**
+	 * Random function, display a random picture and quote
+	 */
+	public function random()
+	{
+		// this is the view we want shown
+		$this->data['pagebody'] = 'justone';
+		
+		// select a random quote to display
+		$selected = rand(1, 6);
+		$record = $this->quotes->get($selected);
+     	$this->data = array_merge($this->data, $record);
+		$this->render();
+	}
 }
