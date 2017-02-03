@@ -13,18 +13,29 @@ class First extends Application
 	/**
 	 * Homepage for our app
 	 */
+
 	public function index()
 	{
 		// this is the view we want shown
 		$this->data['pagebody'] = 'justone';
-
 		// get the first record, to pass on to our view
 		$record = $this->quotes->get(1);
 		$this->data['what'] = $record['what'];
 		$this->data['who'] = $record['who'];
 		$this->data['mug'] = $record['mug'];
-
 		$this->render();
 	}
 
+   public function zzz()
+   {
+      // this is the view we want shown
+      $this->data['pagebody'] = 'justone'; 
+
+      // build the list of authors, to pass on to our view
+      $record = $this->quotes->get(1);
+
+
+      $this->data = array_merge($this->data, $record);
+      $this->render();
+	}
 }
